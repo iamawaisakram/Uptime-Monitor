@@ -10,6 +10,7 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const handlers = require('./lib/handlers');
 
 // ******************* The HTTP Server should respond to all requests with string
 const httpServer = http.createServer(function(req, res) {
@@ -106,21 +107,8 @@ var unifiedServer = function(req, res) {
   });
 };
 
-// * Define the handlers
-var handlers = {};
-
-// * Ping handler
-handlers.ping = function(data, callback) {
-  // * callback a http code and payload object
-  callback(200);
-};
-
-// * Not Found handler
-handlers.notFound = function(data, callback) {
-  callback(404);
-};
-
 // * Define the request Router
 var router = {
-  ping: handlers.ping
+  ping: handlers.ping,
+  users: handlers.users
 };
