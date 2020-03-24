@@ -71,6 +71,7 @@ var unifiedServer = function(req, res) {
         : handlers.notFound;
 
     // * Construct the data object to send to the handler
+    console.log('called.....', buffer, helpers.parseJsonToObject(buffer));
     var data = {
       trimmedPath: trimmedPath,
       queryStringObject: queryStringObject,
